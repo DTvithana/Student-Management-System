@@ -19,6 +19,7 @@ function InputComponent({ Md, label, objRef, error}: Props) {
             borderWidth: '5px',
             fontFamily: "Roboto",
             borderColor:'#009ee2',
+
         }}}
         label={label} sx={{ color: 'black'}} size="small" fullWidth />
        {error && <Alert sx={{color: 'white', background:'#FF9494', borderRadius: '12px'}} severity="error">{error}</Alert>}
