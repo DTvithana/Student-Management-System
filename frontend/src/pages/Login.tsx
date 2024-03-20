@@ -3,7 +3,7 @@ import backImg from '../assets/image.jpg'
 import LamayaImg from '../assets/call_action.svg'
 import InputComponent from '../components/InputComponent';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
-import TypographyComponent from '../components/typographyComponent';
+import TypographyComponent from '../components/TypographyComponent';
 
 const styles = {
     paperContainer: {
