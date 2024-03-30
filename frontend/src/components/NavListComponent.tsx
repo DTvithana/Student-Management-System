@@ -13,12 +13,12 @@ function NavListComponent({to , name}: Props) {
             classes={{ root: 'MuiListItem-indicators' }}
             button
           >
-             {/* <Link to={`/${to}`}>
+             <Link to={`/${to}`}>
             <ListItemText
               primaryTypographyProps={{ noWrap: true }}
               primary={name}
             />
-            </Link> */}
+            </Link>
         </ListItem>
   )
 }

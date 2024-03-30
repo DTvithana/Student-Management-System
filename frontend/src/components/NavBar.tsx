@@ -17,34 +17,14 @@ interface Props {
 function UserNavBar({user, handelClick, name}: Props) {
 
   return (
-    <Box borderRadius='18'  paddingLeft='1rem' sx={{ width: '1840px' }}>
+    <Box borderRadius='18'  paddingLeft='1rem' 
+    sx={{ width: '100rem' }}
+    >
     <AppBar position="static" sx={{bgcolor: '#1A5092'}}>
       <Toolbar>
-        <Typography
-          component="div"
-          sx={{ fontFamily: '-apple-system', fontStyle: 'italic', fontSize: '25px' ,display: { xs: 'none', sm: 'block' } }}
-        >
-          CarrierCompass
-        </Typography>
+      
         <Box paddingLeft='7rem'>
-        <List disablePadding component={Box} display="flex">  
-          
-            <NavListComponent to={''} name={'Home'}/>
-         {user &&  
-         <>
-            <NavListComponent to={'user'} name={'Dashboard'}/>
-         </>
-         }
-            <NavListComponent to={''} name={'Help'}/>
-         {!user &&  
-           <>
-            <NavListComponent to={'reg'} name={'Register'}/>
-            <NavListComponent to={'login'} name={'Login'}/>
-            </>   
-          }
-          <Box>
-          </Box>
-        </List>
+        
         </Box>
          {user && <Typography
             component="div"

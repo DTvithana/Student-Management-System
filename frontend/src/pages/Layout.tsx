@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import backImg from '../assets/image.jpg'
 import UserNavBar from '../components/NavBar';
+import SideBar from '../components/SideBar';
 
 const styles = {
     paperContainer: {
@@ -40,7 +41,24 @@ function Layout() {
             <UserNavBar />
         </Grid>
         <Grid item xs={6}>
-             
+          <Box >
+          <Grid  
+            // width='100px'
+            paddingTop='1rem'
+            container
+            direction="row"
+            alignItems="stretch"
+            spacing={5}>
+              <Grid item xs={3}>
+                  <SideBar/>
+              </Grid>
+              <Grid item xs={3}>
+                  <Box paddingLeft='350px' paddingTop='1rem'>
+                  <Outlet/>
+                  </Box>
+              </Grid>
+          </Grid>
+          </Box>  
         </Grid>
     </Grid>
     </Box>
