@@ -2,7 +2,7 @@ import { Box, Grid, Paper } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import backImg from '../assets/image.jpg'
-import UserNavBar from '../components/navbar/NavBar';
+import UserNavBar from '../components/NavBar';
 
 const styles = {
     paperContainer: {
