@@ -19,7 +19,7 @@ function Dashboard() {
         <Grid item lg={7.5} xs={12}>
             <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}>  
                 <Box borderRadius ='15px' sx={{ boxShadow: 3}}>
-                
+                    
                 </Box>
             </Grow>    
         </Grid>
