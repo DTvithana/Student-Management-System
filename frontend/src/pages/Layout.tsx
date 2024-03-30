@@ -37,7 +37,7 @@ function Layout() {
     <Box >
     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item xs={30}>
-            <UserNavBar handelClick={handelLogout} user={user} name={user.fName} />
+            <UserNavBar />
         </Grid>
         <Grid item xs={6}>
              
