@@ -1,8 +1,5 @@
 import { Card, Grid, Grow, Typography } from '@mui/material'
-import React from 'react'
 import Counter from './Counter'
-import { transform } from 'framer-motion'
-import { Link } from 'react-router-dom'
 
 interface Props {
     start: number,
@@ -13,11 +10,10 @@ interface Props {
     link: string
 }
 
-function StatusCard({start, end, title, b1, b2, link}:Props) {
+function StatusCard({start, end, title, b1, b2}:Props) {
   return (
     <Grid item xs={12} md={4} lg={3}>
     <Grow in={true}>
-      <Link to={`${link}`}>
     <Card
         sx={{
           width: 200,
@@ -45,8 +41,7 @@ function StatusCard({start, end, title, b1, b2, link}:Props) {
         <h4>{title}</h4>
       </Typography>
       <Typography sx={{paddingTop: '1rem'}} variant="h4" fontFamily='sans-serif' fontWeight='550'><Counter start={start} end={end}/></Typography>
-    </Card>
-    </Link>
+    </Card> 
   </Grow>
 </Grid>
   )
