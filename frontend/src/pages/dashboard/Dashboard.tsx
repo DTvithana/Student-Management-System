@@ -1,6 +1,7 @@
 import { Box, Container, Grid, Grow } from '@mui/material';
 import DashButton from './dashButton';
 import Calendar from './Calander';
+import Status from './Status';
 
 function Dashboard() {
   return (
@@ -19,7 +20,7 @@ function Dashboard() {
         <Grid item lg={7.5} xs={12}>
             <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}>  
                 <Box borderRadius ='15px' sx={{ boxShadow: 3}}>
-                    
+                   <Status/>
                 </Box>
             </Grow>    
         </Grid>

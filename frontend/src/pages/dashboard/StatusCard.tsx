@@ -7,7 +7,6 @@ interface Props {
     title: string,
     b1: string,
     b2: string
-    link: string
 }
 
 function StatusCard({start, end, title, b1, b2}:Props) {
@@ -16,8 +15,8 @@ function StatusCard({start, end, title, b1, b2}:Props) {
     <Grow in={true}>
     <Card
         sx={{
-          width: 200,
-          height: 200,
+          width: '10rem',
+          height: '12rem',
           paddingTop: '3rem',
           backgroundColor: b1,
           borderRadius: '12px',

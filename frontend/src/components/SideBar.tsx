@@ -13,7 +13,7 @@ function SideBar() {
      <Box paddingBottom='0.5rem' paddingLeft='0.2rem'  sx={{opacity: '0.8', boxShadow: 3}}>
         <Grow in={true} {...(true ? { timeout: 600 } : {})} style={{ transformOrigin: '0 0 0' }}>
     <List
-    sx={{ paddingLeft: '1rem', borderRadius: '18px' ,width: '15.2rem', height: '37.5rem', bgcolor: '#1A5092', color: 'white' }}
+    sx={{ paddingLeft: '1rem', borderRadius: '18px' ,width: '15.2rem', height: '37.5rem', bgcolor: '#009bd6', color: 'white' }}
     aria-label="contacts"
   >
         <Typography  color='#A4EBF3'  variant="subtitle1" paddingTop='2rem' paddingBottom='5.3rem'>

@@ -6,7 +6,6 @@ import {
     useTheme,
     Grow
   } from '@mui/material';
-  import Counter from './Counter';
 import StatusCard from './StatusCard';
   
 function Status() {
@@ -19,16 +18,7 @@ function Status() {
     }
     }}>
     <Box p={4} paddingLeft='5rem' >
-        <Typography
-          sx={{
-            pb: 3
-          }}
-          variant="h5"
-          fontFamily='sans-serif'
-          fontStyle='oblique'
-        >
-          Dhanuka Perfomance
-        </Typography>
+        
         <Box >
         <Grid container spacing={20}>
           
