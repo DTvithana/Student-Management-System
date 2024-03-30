@@ -1,19 +1,14 @@
 import { Card, Grid, Grow, Typography } from '@mui/material'
-import React from 'react'
-import Counter from './Counter'
-import { transform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 interface Props {
-    start: number,
-    end: number,
     title: string,
     b1: string,
-    b2: string
+    b2: string,
     link: string
 }
 
-function ButtonCard({start, end, title, b1, b2, link}:Props) {
+function ButtonCard({ title, b1, b2, link}:Props) {
   return (
     <Grid item xs={12} md={4} lg={3}>
     <Grow in={true}>
@@ -44,7 +39,7 @@ function ButtonCard({start, end, title, b1, b2, link}:Props) {
       >
         <h4>{title}</h4>
       </Typography>
-      <Typography sx={{paddingTop: '1rem'}} variant="h4" fontFamily='sans-serif' fontWeight='550'><Counter start={start} end={end}/></Typography>
+      <Typography sx={{paddingTop: '1rem'}} variant="h4" fontFamily='sans-serif' fontWeight='550'></Typography>
     </Card>
     </Link>
   </Grow>
