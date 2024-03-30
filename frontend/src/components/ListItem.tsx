@@ -20,7 +20,7 @@ function ListItemCom({message,icon,link }: Props) {
   
   
   return (
-   <ListItem disablePadding>
+   <ListItem>
       <ListItemButton onClick={handelClick} >
           <ListItemIcon>
             {icon}

@@ -53,7 +53,7 @@ function Layout() {
                   <SideBar/>
               </Grid>
               <Grid item xs={3}>
-                  <Box paddingLeft='350px' paddingTop='1rem'>
+                  <Box paddingLeft='10rem' paddingTop='1rem'>
                   <Outlet/>
                   </Box>
               </Grid>

@@ -15,9 +15,9 @@ function ButtonCard({ title, b1, b2, link}:Props) {
       <Link to={`${link}`}>
     <Card
         sx={{
-          width: 200,
-          height: 200,
-          paddingTop: '3rem',
+          width: '12rem',
+          height: '4rem',
+          paddingTop: '1rem',
           backgroundColor: b1,
           borderRadius: '12px',
           textAlign: 'center',

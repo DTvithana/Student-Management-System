@@ -1,12 +1,13 @@
 import { Box, Container, Grid, Grow } from '@mui/material';
 import DashButton from './dashButton';
+import Calendar from './Calander';
 
 function Dashboard() {
   return (
     <>
     <Container maxWidth="lg">
       <Grid
-        width='1500px'
+        width='75rem'
         paddingTop='20px'
         container
         direction="row"
@@ -22,10 +23,10 @@ function Dashboard() {
                 </Box>
             </Grow>    
         </Grid>
-        <Grid item lg={3} xs={12}>
+        <Grid item lg={3.5} xs={13}>
             <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 1200 } : {})}> 
                 <Box borderRadius ='15px' sx={{boxShadow: 3}}>
-                  
+                  <Calendar/>
                 </Box>
             </Grow>
         </Grid>
