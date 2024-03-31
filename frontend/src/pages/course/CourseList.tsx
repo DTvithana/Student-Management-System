@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Box, Button, Card, Collapse, Dialog, Divider, Fade, Grid, Grow, InputAdornment, TextField, Typography, Zoom } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
+import CourseListComponent from './CourseListComponent';
 
 
 interface CourseProps{
@@ -139,7 +140,7 @@ function CourseList() {
               </Box>
                 <Grid container spacing={3}>
                 
-                {/* <CourseListComponent data={SearchCourse} handleView={handleView} handleEdit={handleEdit} /> */}
+                <CourseListComponent data={SearchCourse} handleView={handleView} handleEdit={handleEdit} />
       
 
                 </Grid>
