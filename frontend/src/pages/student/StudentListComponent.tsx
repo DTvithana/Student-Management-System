@@ -50,7 +50,7 @@ export default function StudentListComponent() {
               <TableCell align="right">{row.fat}</TableCell>
               <TableCell align="right"> 
                     <Button sx={{
-                        bgcolor: '#ff0000'+ ' !important', 
+                        bgcolor: '#09bd0c'+ ' !important', 
                         '&:hover': {
                             backgroundColor: '#4EF037',
                             opacity: [0.9, 0.8, 0.7]
@@ -63,18 +63,18 @@ export default function StudentListComponent() {
                         </Button>
                 </TableCell>
               <TableCell align="right"> 
-                    <Button sx={{
-                        bgcolor: '#3c998e'+ ' !important', 
-                        '&:hover': {
-                            backgroundColor: '#4EF037',
-                            opacity: [0.9, 0.8, 0.7]
-                        },
-                        color: 'white', width: '120px'
-                    }} 
-                    //    onClick={() => handelClick(id)} 
-                    variant="contained" >
-                            Delete
-                        </Button>
+                <Button sx={{
+                    bgcolor: '#09bd0c'+ ' !important', 
+                    '&:hover': {
+                        backgroundColor: '#4EF037',
+                        opacity: [0.9, 0.8, 0.7]
+                    },
+                    color: 'white', width: '120px'
+                }} 
+                //    onClick={() => handelClick(id)} 
+                variant="contained" >
+                        Delete
+                    </Button>
                 </TableCell>
             </TableRow>
           ))}
