@@ -10,50 +10,48 @@ import { Box, Button, Dialog, Fade } from '@mui/material';
 import TablePagination from '@mui/material/TablePagination';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import StudentViewCard from './StudentViewCard';
+import StudentEditCard from './StudentEditCard';
 
 interface StdProps {
   data: object[];
   handleView: (id: string) => void;
+  handleEdit: (id: string) => void;
   std: object[];
 }
 
-// function StudentView(props: { onClose: any; selectedValue: any; openView: any; std: object[] }) {
-//     const { onClose, selectedValue, std, openView } = props;
-//     const handleClose = () => {
-//       onClose(selectedValue);
-//     };
+function StudentEdit(props: { onClose: any; selectedValue: any; openView: any; }) {
+    const { onClose, selectedValue, openView } = props;
+    const handleClose = () => {
+      onClose(selectedValue);
+    };
   
-//     return (
-//       <Dialog 
-//       sx={{
-//         backdropFilter: "blur(2px) sepia(5%)",
-//       }}
-//       onClose={handleClose} open={openView} maxWidth='xl' scroll='body' TransitionComponent={Fade}>
-//         <StudentViewCard handelClick={handleClose} std={std}/>
-//       </Dialog>
+    return (
+      <Dialog 
+      sx={{
+        backdropFilter: "blur(2px) sepia(5%)",
+      }}
+      onClose={handleClose} open={openView} maxWidth='xl' scroll='body' TransitionComponent={Fade}>
+        <StudentEditCard handelClick={handleClose}/>
+      </Dialog>
     
-//     );
-//   }
+    );
+  }
   
-//   StudentView.propTypes = {
-//     onClose: PropTypes.func.isRequired,
-//     open: PropTypes.bool.isRequired,
-//     selectedValue: PropTypes.string.isRequired
-//   };
+  StudentEdit.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    open: PropTypes.bool.isRequired,
+    selectedValue: PropTypes.string.isRequired
+  };
 
 
-export default function StudentListComponent({ data, handleView, std }: StdProps) {
+export default function StudentListComponent({ data, handleView, handleEdit }: StdProps) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(2);
   
-  const [openView, setOpenView] = useState(false);
-  const handleClickOpenView = () => {
-    setOpenView(true);
-  };
-
-  const handleCloseView = () => {
-    setOpenView(false);
+  const [openEdit, setOpenEdit] = useState(false);
+ 
+  const handleCloseEdit = () => {
+    setOpenEdit(false);
   }; 
 
   return (
@@ -86,7 +84,9 @@ export default function StudentListComponent({ data, handleView, std }: StdProps
                         width: '120px',
                       }}
                       variant="contained"
-                     
+                      onClick={() => { 
+                        handleEdit(row._id)
+                        setOpenEdit(true)}}
                     >
                       Edit
                     </Button>
@@ -102,7 +102,7 @@ export default function StudentListComponent({ data, handleView, std }: StdProps
                       variant="contained"
                       onClick={() => { 
                         handleView(row._id)
-                        setOpenView(true)}}
+                        }}
                     >
                       View
                     </Button>
@@ -121,9 +121,9 @@ export default function StudentListComponent({ data, handleView, std }: StdProps
       />
        
 
-              {/* <StudentView
-              openView={openView}
-              onClose={handleCloseView} selectedValue={''} std={std}                /> */}
+              <StudentEdit
+              openView={openEdit}
+              onClose={handleCloseEdit} selectedValue={''} open={false}                 />
     </Box>
   );
 }

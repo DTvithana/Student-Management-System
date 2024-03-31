@@ -1,18 +1,20 @@
 import { Alert, Box, Grid, TextField } from '@mui/material'
 
 interface Props{
+    value: string,
     Md: number,
     label: string,
     objRef: object,
     error: string | null | undefined
 }
 
-function InputComponent({ Md, label, objRef, error}: Props) {
+function InputComponent({ Md, label, objRef, error, value}: Props) {
   return (
     <Grid sx={{ padding: '1rem' }} item xs={6} md={Md} >
         <TextField
          { ...objRef}
          id={label}
+         value={value}
         InputProps={{
         style: {
             borderRadius: "10px",

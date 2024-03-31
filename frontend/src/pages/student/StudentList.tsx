@@ -113,6 +113,10 @@ function StudentList() {
      localStorage.setItem('view', JSON.stringify(views));
      navigate('/student/view')
     }
+
+    const handleEdit = (_id: string) => {
+      localStorage.setItem('edit', JSON.stringify(_id));
+     }
     
     const SearchStd = (_id: string) => {
       if(_id) setSearchStudent(student.filter(u => u._id === _id));
@@ -164,7 +168,7 @@ function StudentList() {
               </Box>
                 <Grid container spacing={3}>
                 
-                <StudentListComponent data={SearchStudent} handleView={handleView} std={view}/>
+                <StudentListComponent data={SearchStudent} handleView={handleView} handleEdit={handleEdit} />
       
 
                 </Grid>
