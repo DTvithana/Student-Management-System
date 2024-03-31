@@ -4,12 +4,21 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 // import EduCard from './EduCard';
 import PropTypes from 'prop-types';
 import SearchIcon from '@mui/icons-material/Search';
+import StudentListComponent from './StudentListComponent';
 
 
 interface EduProps{
   _id: string,
-  name: string,
+  fname: string,
+  lname: string,
+  birthday: string,
+  degree: string,
   index:string,
+  address: string,
+  course1: string,
+  course2: string,
+  course3: string,
+  course4: string,
 }
 
     function SimpleDialog(props: { onClose: any; selectedValue: any; open: any; }) {
@@ -39,7 +48,60 @@ interface EduProps{
 
 function StudentList() {
     const ref = useRef<HTMLInputElement>(null)
-    const [student, setStudent] = useState<EduProps[]>([]);
+    const [student, setStudent] = useState<EduProps[]>([
+      {
+        _id: '1',
+        fname: 'John',
+        lname: 'Doe',
+        birthday: '1990-01-01',
+        degree: 'Bachelor of Science',
+        index: 'ABC123',
+        address: '123 Main St.',
+        course1: 'Math 101',
+        course2: 'English 101',
+        course3: 'Physics 101',
+        course4: 'Chemistry 101',
+      },
+      {
+        _id: '2',
+        fname: 'Jane',
+        lname: 'Smith',
+        birthday: '1992-05-15',
+        degree: 'Bachelor of Arts',
+        index: 'DEF456',
+        address: '456 Oak Ave.',
+        course1: 'History 101',
+        course2: 'Spanish 101',
+        course3: 'Psychology 101',
+        course4: 'Art 101',
+      },
+      {
+        _id: '3',
+        fname: 'Bob',
+        lname: 'Johnson',
+        birthday: '1988-09-20',
+        degree: 'Master of Business Administration',
+        index: 'GHI789',
+        address: '789 Elm St.',
+        course1: 'Marketing 101',
+        course2: 'Finance 101',
+        course3: 'Management 101',
+        course4: 'Accounting 101',
+      },
+      {
+        _id: 'unique_id_4',
+        fname: 'Alice',
+        lname: 'Williams',
+        birthday: '1995-03-10',
+        degree: 'Bachelor of Science in Computer Science',
+        index: 'JKL012',
+        address: '012 Pine Rd.',
+        course1: 'Programming 101',
+        course2: 'Data Structures 101',
+        course3: 'Algorithms 101',
+        course4: 'Databases 101',
+      },
+    ]);
     const [error, setError] = useState('');
 
     const [open, setOpen] = useState(false);
@@ -51,7 +113,9 @@ function StudentList() {
     const handleClose = () => {
       setOpen(false);
     }; 
+
     
+    console.log(student);
     // const handelDelete = (id: string) => {
     //   const originalWork = [...student];
     //   setStudent(student.filter(u => u._id !== id));
@@ -99,16 +163,8 @@ function StudentList() {
               </Box>
                 <Grid container spacing={3}>
                 
-                {/* {student.map((edu) => (
-                    <Grid key={edu._id} item xs={12} md={4} lg={6}>
-                    <StudentCard
-                        id={edu._id}
-                        name={edu.name}
-                        index={edu.index}
-                        handelClick={handelDelete}
-                    />
-                    </Grid>
-                    ))} */}
+                <StudentListComponent data={student}/>
+      
 
                 </Grid>
                 {/* <SimpleDialog
