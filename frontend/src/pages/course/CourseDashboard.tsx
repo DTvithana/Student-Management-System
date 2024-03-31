@@ -1,6 +1,6 @@
 import { Box, Container, Grid, Grow } from '@mui/material';
-import CourseList from './StudentList';
 import DashButton from '../dashboard/dashButton';
+import CourseList from './CourseList';
 
 
 function CourseDashboard() {
