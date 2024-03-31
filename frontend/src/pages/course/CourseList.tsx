@@ -83,7 +83,7 @@ function CourseList() {
     const handleView = (_id: string) => {
      const views = course.filter(u => u._id === _id);
      localStorage.setItem('view', JSON.stringify(views));
-     navigate('/Course/view')
+     navigate('/course/view')
     }
 
     const handleEdit = (_id: string) => {
