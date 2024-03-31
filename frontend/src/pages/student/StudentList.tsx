@@ -102,6 +102,7 @@ function StudentList() {
         course4: 'Databases 101',
       },
     ]);
+    const [SearchStudent, setSearchStudent] = useState<EduProps[]>([...student])
     const [error, setError] = useState('');
 
     const [open, setOpen] = useState(false);
@@ -113,9 +114,14 @@ function StudentList() {
     const handleClose = () => {
       setOpen(false);
     }; 
-
     
-    console.log(student);
+    const SearchStd = (_id: string) => {
+      if(_id) setSearchStudent(student.filter(u => u._id === _id));
+      else setSearchStudent(student)
+      console.log(student);
+    }
+    
+
     // const handelDelete = (id: string) => {
     //   const originalWork = [...student];
     //   setStudent(student.filter(u => u._id !== id));
@@ -144,10 +150,6 @@ function StudentList() {
     <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}> 
           <Card sx={{width: '1300px', borderRadius: '15px'}}>
             <Box p={5} >
-                <form onSubmit={(event) => {
-                  event.preventDefault();
-                  if(ref.current) console.log(ref.current.value);
-                }}>
                    <TextField 
                    InputProps={{
                     startAdornment: (
@@ -157,13 +159,12 @@ function StudentList() {
                     ),
                   }}
                    fullWidth placeholder='Search' id="outlined-basic" variant="outlined"
-                   inputRef={ref}
+                   onChange={(event) => SearchStd(event.target.value)}
                    />
-                </form>  
               </Box>
                 <Grid container spacing={3}>
                 
-                <StudentListComponent data={student}/>
+                <StudentListComponent data={SearchStudent}/>
       
 
                 </Grid>

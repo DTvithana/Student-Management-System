@@ -41,7 +41,7 @@ export default function StudentListComponent({data}: StdProps) {
               <TableCell align="right">{row.index}</TableCell>
               <TableCell align="right"> 
                     <Button sx={{
-                        bgcolor: '#09bd0c'+ ' !important', 
+                        bgcolor: '#ff0000'+ ' !important', 
                         '&:hover': {
                             backgroundColor: '#4EF037',
                             opacity: [0.9, 0.8, 0.7]
@@ -50,12 +50,12 @@ export default function StudentListComponent({data}: StdProps) {
                     }} 
                     //    onClick={() => handelClick(id)} 
                     variant="contained">
-                            Delete
+                            Edit
                         </Button>
                 </TableCell>
               <TableCell align="right"> 
                 <Button sx={{
-                    bgcolor: '#09bd0c'+ ' !important', 
+                    bgcolor: '#3c998e'+ ' !important', 
                     '&:hover': {
                         backgroundColor: '#4EF037',
                         opacity: [0.9, 0.8, 0.7]
@@ -64,7 +64,7 @@ export default function StudentListComponent({data}: StdProps) {
                 }} 
                 //    onClick={() => handelClick(id)} 
                 variant="contained" >
-                        Delete
+                        View
                     </Button>
                 </TableCell>
             </TableRow>
