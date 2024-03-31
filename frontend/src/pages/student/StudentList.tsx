@@ -6,6 +6,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import SearchIcon from '@mui/icons-material/Search';
 import StudentListComponent from './StudentListComponent';
 import StudentViewCard from './StudentViewCard';
+import { useNavigate } from 'react-router-dom';
 
 
 interface EduProps{
@@ -25,6 +26,7 @@ interface EduProps{
 
 
 function StudentList() {
+    const navigate = useNavigate();
     const ref = useRef<HTMLInputElement>(null)
     const [student, setStudent] = useState<EduProps[]>([
       {
@@ -107,7 +109,9 @@ function StudentList() {
     }; 
 
     const handleView = (_id: string) => {
-     setView(student.filter(u => u._id === _id));
+     const views = student.filter(u => u._id === _id);
+     localStorage.setItem('view', JSON.stringify(views));
+     navigate('/student/view')
     }
     
     const SearchStd = (_id: string) => {

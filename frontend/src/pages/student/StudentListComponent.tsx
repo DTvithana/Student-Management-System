@@ -18,29 +18,29 @@ interface StdProps {
   std: object[];
 }
 
-function StudentView(props: { onClose: any; selectedValue: any; openView: any; std: object[] }) {
-    const { onClose, selectedValue, std, openView } = props;
-    const handleClose = () => {
-      onClose(selectedValue);
-    };
+// function StudentView(props: { onClose: any; selectedValue: any; openView: any; std: object[] }) {
+//     const { onClose, selectedValue, std, openView } = props;
+//     const handleClose = () => {
+//       onClose(selectedValue);
+//     };
   
-    return (
-      <Dialog 
-      sx={{
-        backdropFilter: "blur(2px) sepia(5%)",
-      }}
-      onClose={handleClose} open={openView} maxWidth='xl' scroll='body' TransitionComponent={Fade}>
-        <StudentViewCard handelClick={handleClose} std={std}/>
-      </Dialog>
+//     return (
+//       <Dialog 
+//       sx={{
+//         backdropFilter: "blur(2px) sepia(5%)",
+//       }}
+//       onClose={handleClose} open={openView} maxWidth='xl' scroll='body' TransitionComponent={Fade}>
+//         <StudentViewCard handelClick={handleClose} std={std}/>
+//       </Dialog>
     
-    );
-  }
+//     );
+//   }
   
-  StudentView.propTypes = {
-    onClose: PropTypes.func.isRequired,
-    open: PropTypes.bool.isRequired,
-    selectedValue: PropTypes.string.isRequired
-  };
+//   StudentView.propTypes = {
+//     onClose: PropTypes.func.isRequired,
+//     open: PropTypes.bool.isRequired,
+//     selectedValue: PropTypes.string.isRequired
+//   };
 
 
 export default function StudentListComponent({ data, handleView, std }: StdProps) {
@@ -119,10 +119,11 @@ export default function StudentListComponent({ data, handleView, std }: StdProps
         onPageChange={(event, newPage) => setPage(newPage)}
         rowsPerPage={rowsPerPage}
       />
+       
 
-              <StudentView
+              {/* <StudentView
               openView={openView}
-              onClose={handleCloseView} selectedValue={''} std={std}                />
+              onClose={handleCloseView} selectedValue={''} std={std}                /> */}
     </Box>
   );
 }
