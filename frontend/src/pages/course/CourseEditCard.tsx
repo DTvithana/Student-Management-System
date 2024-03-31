@@ -40,15 +40,8 @@ return (
            </Typography>
            <Grid container spacing={2} paddingTop='2rem'>
                <InputComponent Md={15} label={'id'} value={edit}  error={''}/>
-               <InputComponent Md={6} label={'First Name'} objRef={register('fNAme')} error={''} />
-               <InputComponent Md={6} label={'Last Name'} objRef={register('lName')} error={''}/>
-               <InputComponent Md={15} label={'Address'} objRef={register('address')} error={''}/>
-               <InputComponent Md={15} label={'BirthDay'} objRef={register('birthDay')} error={''}/>
-               <InputComponent Md={15} label={'Degree'} objRef={register('degree')} error={''}/>
-               <InputComponent Md={15} label={'Course 1'} objRef={register('course1')} error={''}/>
-               <InputComponent Md={15} label={'Course 2'} objRef={register('course2')} error={''}/>
-               <InputComponent Md={15} label={'Course 3'} objRef={register('course3')} error={''}/>
-               <InputComponent Md={15} label={'Course 4'} objRef={register('course4')} error={''}/>
+               <InputComponent Md={6} label={'Course Name'} objRef={register('cNAme')} error={''} />
+               <InputComponent Md={6} label={'Course ID'} objRef={register('cID')} error={''}/>
 
                <Grid item xs={6} md={1.7} >
                  <Button onClick={handelClick}  sx={{borderRadius: '12px'}} variant="outlined">cancel</Button>
