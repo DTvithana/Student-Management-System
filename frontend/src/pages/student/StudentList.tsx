@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Box, Button, Card, Collapse, Dialog, Divider, Fade, Grid, Grow, InputAdornment, TextField, Typography, Zoom } from '@mui/material'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 // import EduCard from './EduCard';
-
+import axios, { CanceledError } from 'axios';
 import SearchIcon from '@mui/icons-material/Search';
 import StudentListComponent from './StudentListComponent';
 import StudentViewCard from './StudentViewCard';
@@ -28,73 +28,8 @@ interface EduProps{
 function StudentList() {
     const navigate = useNavigate();
     const ref = useRef<HTMLInputElement>(null)
-    const [student, setStudent] = useState<EduProps[]>([
-      {
-        _id: '1',
-        fName: 'John',
-        lname: 'Doe',
-        birthday: '1990-01-01',
-        degree: 'Bachelor of Science',
-        index: 'ABC123',
-        address: '123 Main St.',
-        course1: 'Math 101',
-        course2: 'English 101',
-        course3: 'Physics 101',
-        course4: 'Chemistry 101',
-      },
-      {
-        _id: '2',
-        fName: 'Jane',
-        lname: 'Smith',
-        birthday: '1992-05-15',
-        degree: 'Bachelor of Arts',
-        index: 'DEF456',
-        address: '456 Oak Ave.',
-        course1: 'History 101',
-        course2: 'Spanish 101',
-        course3: 'Psychology 101',
-        course4: 'Art 101',
-      },
-      {
-        _id: '3',
-        fName: 'Bob',
-        lname: 'Johnson',
-        birthday: '1988-09-20',
-        degree: 'Master of Business Administration',
-        index: 'GHI789',
-        address: '789 Elm St.',
-        course1: 'Marketing 101',
-        course2: 'Finance 101',
-        course3: 'Management 101',
-        course4: 'Accounting 101',
-      },
-      {
-        _id: '4',
-        fName: 'Bob',
-        lname: 'Johnson',
-        birthday: '1988-09-20',
-        degree: 'Master of Business Administration',
-        index: 'GHI789',
-        address: '789 Elm St.',
-        course1: 'Marketing 101',
-        course2: 'Finance 101',
-        course3: 'Management 101',
-        course4: 'Accounting 101',
-      },
-      {
-        _id: '5',
-        fName: 'Bob',
-        lname: 'Johnson',
-        birthday: '1988-09-20',
-        degree: 'Master of Business Administration',
-        index: 'GHI789',
-        address: '789 Elm St.',
-        course1: 'Marketing 101',
-        course2: 'Finance 101',
-        course3: 'Management 101',
-        course4: 'Accounting 101',
-      },
-    ]);
+    const [student, setStudent] = useState<EduProps[]>([]);
+
     const [SearchStudent, setSearchStudent] = useState<EduProps[]>([...student])
     const [error, setError] = useState('');
     const [view, setView] = useState<EduProps[]>([])
@@ -136,18 +71,20 @@ function StudentList() {
     //   })
     // }
 
-    // useEffect(() => {
-    //   const controller = new AbortController();
   
-    //   axios
-    //     .get<EduProps[]>('http://localhost:5000/api/student')
-    //     .then((res) => setStudent(res.data))
-    //     .catch(err => {
-    //       if(err instanceof CanceledError) return;
-    //       setError(err.message)
-    //     });
-    //     return () => controller.abort();
-    // }, [])
+
+    useEffect(() => {
+      const controller = new AbortController();
+
+      axios
+        .get<EduProps[]>('http://localhost:8081/student')
+        .then((res) => setStudent(res.data))
+        .catch(err => {
+          if(err instanceof CanceledError) return;
+          setError(err.message)
+        });
+        return () => controller.abort();
+    }, [])
 
   return (
     <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}> 
