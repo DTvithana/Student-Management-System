@@ -2,15 +2,16 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Box, Button, Card, Collapse, Dialog, Divider, Fade, Grid, Grow, InputAdornment, TextField, Typography, Zoom } from '@mui/material'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 // import EduCard from './EduCard';
-import PropTypes from 'prop-types';
+
 import SearchIcon from '@mui/icons-material/Search';
 import StudentListComponent from './StudentListComponent';
+import StudentViewCard from './StudentViewCard';
 
 
 interface EduProps{
   _id: string,
-  fname: string,
-  lname: string,
+  fName: string,
+  lName: string,
   birthday: string,
   degree: string,
   index:string,
@@ -21,37 +22,14 @@ interface EduProps{
   course4: string,
 }
 
-    function SimpleDialog(props: { onClose: any; selectedValue: any; open: any; }) {
-        const { onClose, selectedValue, open } = props;
-      
-        const handleClose = () => {
-          onClose(selectedValue);
-        };
-      
-        return (
-          <Dialog 
-          sx={{
-            backdropFilter: "blur(2px) sepia(5%)",
-          }}
-          onClose={handleClose} open={open} maxWidth='xl' scroll='body' TransitionComponent={Fade}>
-            <StudentEditCard handelClick={handleClose}/>
-          </Dialog>
-        
-        );
-      }
-      
-      SimpleDialog.propTypes = {
-        onClose: PropTypes.func.isRequired,
-        open: PropTypes.bool.isRequired,
-        selectedValue: PropTypes.string.isRequired
-      };
+
 
 function StudentList() {
     const ref = useRef<HTMLInputElement>(null)
     const [student, setStudent] = useState<EduProps[]>([
       {
         _id: '1',
-        fname: 'John',
+        fName: 'John',
         lname: 'Doe',
         birthday: '1990-01-01',
         degree: 'Bachelor of Science',
@@ -64,7 +42,7 @@ function StudentList() {
       },
       {
         _id: '2',
-        fname: 'Jane',
+        fName: 'Jane',
         lname: 'Smith',
         birthday: '1992-05-15',
         degree: 'Bachelor of Arts',
@@ -77,7 +55,7 @@ function StudentList() {
       },
       {
         _id: '3',
-        fname: 'Bob',
+        fName: 'Bob',
         lname: 'Johnson',
         birthday: '1988-09-20',
         degree: 'Master of Business Administration',
@@ -89,22 +67,35 @@ function StudentList() {
         course4: 'Accounting 101',
       },
       {
-        _id: 'unique_id_4',
-        fname: 'Alice',
-        lname: 'Williams',
-        birthday: '1995-03-10',
-        degree: 'Bachelor of Science in Computer Science',
-        index: 'JKL012',
-        address: '012 Pine Rd.',
-        course1: 'Programming 101',
-        course2: 'Data Structures 101',
-        course3: 'Algorithms 101',
-        course4: 'Databases 101',
+        _id: '4',
+        fName: 'Bob',
+        lname: 'Johnson',
+        birthday: '1988-09-20',
+        degree: 'Master of Business Administration',
+        index: 'GHI789',
+        address: '789 Elm St.',
+        course1: 'Marketing 101',
+        course2: 'Finance 101',
+        course3: 'Management 101',
+        course4: 'Accounting 101',
+      },
+      {
+        _id: '5',
+        fName: 'Bob',
+        lname: 'Johnson',
+        birthday: '1988-09-20',
+        degree: 'Master of Business Administration',
+        index: 'GHI789',
+        address: '789 Elm St.',
+        course1: 'Marketing 101',
+        course2: 'Finance 101',
+        course3: 'Management 101',
+        course4: 'Accounting 101',
       },
     ]);
     const [SearchStudent, setSearchStudent] = useState<EduProps[]>([...student])
     const [error, setError] = useState('');
-
+    const [view, setView] = useState<EduProps[]>([])
     const [open, setOpen] = useState(false);
   
     const handleClickOpen = () => {
@@ -114,6 +105,10 @@ function StudentList() {
     const handleClose = () => {
       setOpen(false);
     }; 
+
+    const handleView = (_id: string) => {
+     setView(student.filter(u => u._id === _id));
+    }
     
     const SearchStd = (_id: string) => {
       if(_id) setSearchStudent(student.filter(u => u._id === _id));
@@ -148,10 +143,11 @@ function StudentList() {
 
   return (
     <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}> 
-          <Card sx={{width: '1300px', borderRadius: '15px'}}>
+          <Card sx={{width: '60rem', borderRadius: '15px', paddingBottom: '2rem'}}>
             <Box p={5} >
                    <TextField 
                    InputProps={{
+                    sx:{ borderRadius: '15px' },
                     startAdornment: (
                       <InputAdornment position="start">
                         <SearchIcon />
@@ -164,7 +160,7 @@ function StudentList() {
               </Box>
                 <Grid container spacing={3}>
                 
-                <StudentListComponent data={SearchStudent}/>
+                <StudentListComponent data={SearchStudent} handleView={handleView} std={view}/>
       
 
                 </Grid>

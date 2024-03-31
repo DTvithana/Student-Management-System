@@ -6,72 +6,123 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Dialog, Fade } from '@mui/material';
+import TablePagination from '@mui/material/TablePagination';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
+import StudentViewCard from './StudentViewCard';
 
+interface StdProps {
+  data: object[];
+  handleView: (id: string) => void;
+  std: object[];
+}
 
-interface StdProps{
-   data: object
-  }
-
-
-export default function StudentListComponent({data}: StdProps) {
+function StudentView(props: { onClose: any; selectedValue: any; openView: any; std: object[] }) {
+    const { onClose, selectedValue, std, openView } = props;
+    const handleClose = () => {
+      onClose(selectedValue);
+    };
   
+    return (
+      <Dialog 
+      sx={{
+        backdropFilter: "blur(2px) sepia(5%)",
+      }}
+      onClose={handleClose} open={openView} maxWidth='xl' scroll='body' TransitionComponent={Fade}>
+        <StudentViewCard handelClick={handleClose} std={std}/>
+      </Dialog>
+    
+    );
+  }
+  
+  StudentView.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    open: PropTypes.bool.isRequired,
+    selectedValue: PropTypes.string.isRequired
+  };
+
+
+export default function StudentListComponent({ data, handleView, std }: StdProps) {
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(2);
+  
+  const [openView, setOpenView] = useState(false);
+  const handleClickOpenView = () => {
+    setOpenView(true);
+  };
+
+  const handleCloseView = () => {
+    setOpenView(false);
+  }; 
 
   return (
     <Box paddingLeft='4rem'>
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 300, maxWidth: 700 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell align="right">Name</TableCell>
-            <TableCell align="right">Index Number</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data?.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row._id}
-              </TableCell>
-              <TableCell align="right">{row.fName}</TableCell>
-              <TableCell align="right">{row.index}</TableCell>
-              <TableCell align="right"> 
-                    <Button sx={{
-                        bgcolor: '#ff0000'+ ' !important', 
-                        '&:hover': {
-                            backgroundColor: '#4EF037',
-                            opacity: [0.9, 0.8, 0.7]
-                        },
-                        color: 'white', width: '120px'
-                    }} 
-                    //    onClick={() => handelClick(id)} 
-                    variant="contained">
-                            Edit
-                        </Button>
-                </TableCell>
-              <TableCell align="right"> 
-                <Button sx={{
-                    bgcolor: '#3c998e'+ ' !important', 
-                    '&:hover': {
-                        backgroundColor: '#4EF037',
-                        opacity: [0.9, 0.8, 0.7]
-                    },
-                    color: 'white', width: '120px'
-                }} 
-                //    onClick={() => handelClick(id)} 
-                variant="contained" >
-                        View
-                    </Button>
-                </TableCell>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 300, maxWidth: 900 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell align="right">Name</TableCell>
+              <TableCell align="right">Index Number</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {data
+              ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => (
+                <TableRow key={row.fName} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  <TableCell component="th" scope="row">
+                    {row._id}
+                  </TableCell>
+                  <TableCell align="right">{row.fName}</TableCell>
+                  <TableCell align="right">{row.index}</TableCell>
+                  <TableCell align="right">
+                    <Button
+                      sx={{
+                        bgcolor: '#ff0000' + ' !important',
+                        '&:hover': { backgroundColor: '#4EF037', opacity: [0.9, 0.8, 0.7] },
+                        color: 'white',
+                        width: '120px',
+                      }}
+                      variant="contained"
+                     
+                    >
+                      Edit
+                    </Button>
+                  </TableCell>
+                  <TableCell align="right">
+                    <Button
+                      sx={{
+                        bgcolor: '#3c998e' + ' !important',
+                        '&:hover': { backgroundColor: '#4EF037', opacity: [0.9, 0.8, 0.7] },
+                        color: 'white',
+                        width: '120px',
+                      }}
+                      variant="contained"
+                      onClick={() => { 
+                        handleView(row._id)
+                        setOpenView(true)}}
+                    >
+                      View
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        component="div"
+        count={data?.length || 0}
+        page={page}
+        onPageChange={(event, newPage) => setPage(newPage)}
+        rowsPerPage={rowsPerPage}
+      />
+
+              <StudentView
+              openView={openView}
+              onClose={handleCloseView} selectedValue={''} std={std}                />
     </Box>
   );
 }
