@@ -3,23 +3,15 @@ import axios from 'axios';
 import { FieldValues, useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import InputComponent from '../../components/InputComponent';
-
-interface Props {
-  handelClick: () => void
-}
+import { useNavigate } from 'react-router-dom';
 
 
-function StudentReg({handelClick}: Props) {
-    const [edit, setEdit] = useState<string | undefined>()
-
-    useEffect(() => {
-        const savedEdit = localStorage.getItem('edit');
-        if(savedEdit) { 
-            const edits = JSON.parse(savedEdit);
-            setEdit(edits) }
-       }, [])
-
-  const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
+function StudentReg() {
+  const navigate = useNavigate();
+  const handelCancel = () => {
+    navigate('/')
+  }
+   const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
 //   const onSubmit = (data: FieldValues) => {
 //       console.log(data);
 //       axios.post('http://localhost:5000/api/education', data )
@@ -30,6 +22,7 @@ function StudentReg({handelClick}: Props) {
 
 return (
     <Card sx={{
+      width: '60rem',
         alignItems: 'center',
         paddingLeft: '2rem'
        }}>
@@ -39,7 +32,6 @@ return (
              Student Registration
            </Typography>
            <Grid container spacing={2} paddingTop='2rem'>
-               <InputComponent Md={15} label={'id'} value={edit}  error={''}/>
                <InputComponent Md={6} label={'First Name'} objRef={register('fNAme')} error={''} />
                <InputComponent Md={6} label={'Last Name'} objRef={register('lName')} error={''}/>
                <InputComponent Md={15} label={'Address'} objRef={register('address')} error={''}/>
@@ -49,13 +41,15 @@ return (
                <InputComponent Md={15} label={'Course 2'} objRef={register('course2')} error={''}/>
                <InputComponent Md={15} label={'Course 3'} objRef={register('course3')} error={''}/>
                <InputComponent Md={15} label={'Course 4'} objRef={register('course4')} error={''}/>
-
-               <Grid item xs={6} md={1.7} >
-                 <Button onClick={handelClick} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth>cancel</Button>
+               
+               <Grid item xs={6} md={6}>
+                 <Button type='submit' sx={{ bgcolor: '#009ee2', color: 'black',height: '2rem', borderRadius: '12px'}} variant="outlined" fullWidth>Save</Button>
                </Grid>
-               <Grid item xs={6} md={1.5}>
-                 <Button type='submit' sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth>Save</Button>
+               <Grid item xs={6} md={6} >
+                 <Button onClick={handelCancel} 
+                 sx={{ bgcolor: '#009ee2', color: 'black', height: '2rem', borderRadius: '12px'}} variant="outlined" fullWidth>cancel</Button>
                </Grid>
+              
            </Grid>
         </Box>
          </form>
