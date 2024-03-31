@@ -11,14 +11,15 @@ function StudentReg() {
   const handelCancel = () => {
     navigate('/')
   }
-   const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
-//   const onSubmit = (data: FieldValues) => {
-//       console.log(data);
-//       axios.post('http://localhost:5000/api/education', data )
-//       .then(res => 
-//        console.log(res.data) )
-//        }
-//   }
+
+  const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
+  const onSubmit = (data: FieldValues) => {
+      console.log(data);
+      axios.post('http://localhost:8081/student', data )
+      .then(res => 
+       console.log(res.data) )
+       }
+  
 
 return (
     <Card sx={{
@@ -26,13 +27,13 @@ return (
         alignItems: 'center',
         paddingLeft: '2rem'
        }}>
-         <form >
+         <form onSubmit={handleSubmit(onSubmit)}>
         <Box p={1} width='740px' sx={{borderRadius: '15px'}}>
            <Typography variant='subtitle1'>
              Student Registration
            </Typography>
            <Grid container spacing={2} paddingTop='2rem'>
-               <InputComponent Md={6} label={'First Name'} objRef={register('fNAme')} error={''} />
+               <InputComponent Md={6} label={'First Name'} objRef={register('fName')} error={''} />
                <InputComponent Md={6} label={'Last Name'} objRef={register('lName')} error={''}/>
                <InputComponent Md={15} label={'Address'} objRef={register('address')} error={''}/>
                <InputComponent Md={15} label={'BirthDay'} objRef={register('birthDay')} error={''}/>

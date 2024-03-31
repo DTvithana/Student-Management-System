@@ -24,7 +24,8 @@ app.get('/students', (req, res) => {
     })
 })
 
-app.post('/students', (req, res) => {
+app.post('/student', (req, res) => {
+    console.log(req.body);
     const { fName, lName, address, birthday, degree, course1, course2, course3, course4 } = req.body;
     const sql = `INSERT INTO students (fName, lName, address, birthday, degree, course1, course2, course3, course4) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
     const values = [fName, lName, address, birthday, degree, course1, course2, course3, course4];
@@ -35,7 +36,7 @@ app.post('/students', (req, res) => {
 })
 });
 
-app.put('/students/:id', (req, res) => {
+app.put('/student/:id', (req, res) => {
     const { fName, lName, address, birthday, degree, course1, course2, course3, course4 } = req.body;
     const sql = `UPDATE students SET fName = ?, lName = ?, address = ?, birthday = ?, degree = ?, course1 = ?, course2 = ?, course3 = ?, course4 = ? WHERE id = ?`;
     const values = [fName, lName, address, birthday, degree, course1, course2, course3, course4, req.params.id];
@@ -46,7 +47,7 @@ app.put('/students/:id', (req, res) => {
 })
 });
 
-app.get('/courses', (req, res) => {
+app.get('/course', (req, res) => {
     const sql = 'SELECT * FROM courses';
     db.query(sql, (err, result) => {
         if(err) throw err;
@@ -54,7 +55,7 @@ app.get('/courses', (req, res) => {
     })
 });
 
-app.put('/courses/:id', (req, res) => {
+app.put('/course/:id', (req, res) => {
     const { courseName, courseId } = req.body;
     const sql = `UPDATE courses SET courseName = ?, courseId = ? WHERE id = ?`;
     const values = [courseName, courseId, req.params.id];
