@@ -1,6 +1,7 @@
 import { Box, Button, Card, Grid, Grow, Typography } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface EduProps{
     _id: string,
@@ -18,6 +19,7 @@ interface EduProps{
 
 
 function StudentViewCard() {
+    const navigate = useNavigate();
     const [view, setView] = useState<EduProps | null>()
    // console.log(view)
 
@@ -79,7 +81,7 @@ function StudentViewCard() {
                 </Grid>
                <Grid sx={{ padding: '1rem' }} item xs={6} md={15}>
                <Box paddingTop='20px'>
-               {/* <Button sx={{
+               <Button sx={{
                  bgcolor: '#09bd0c'+ ' !important', 
                  '&:hover': {
                      backgroundColor: '#4EF037',
@@ -87,10 +89,10 @@ function StudentViewCard() {
                    },
                  color: 'white', width: '120px'
                }} 
-            //    onClick={() => handelClick(view._id)} 
-               variant="contained" startIcon={<DeleteIcon />}>
-                    Delete
-                </Button> */}
+               onClick={() => navigate('/student')} 
+               variant="contained">
+                    Back
+                </Button>
                 </Box>
                </Grid>
            </Grid>
