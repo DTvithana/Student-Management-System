@@ -4,6 +4,7 @@ import Layout from "./pages/Layout";
 import Dashboard from "./pages/dashboard/Dashboard";
 import StudentDashboard from "./pages/student/StudentDashboard";
 import StudentViewCard from "./pages/student/StudentViewCard";
+import CourseDashboard from "./pages/course/CourseDashboard";
 
 const router = createBrowserRouter([
     { path: '/',
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
         {  path: '',  element: <Dashboard/> },
         {  path: '/student',  element: <StudentDashboard/> },
         {  path: '/student/view',  element: <StudentViewCard/> },
+        {  path: '/course',  element: <CourseDashboard/> },
       ]
     },
     {

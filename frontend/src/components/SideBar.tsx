@@ -21,7 +21,7 @@ function SideBar() {
         </Typography>
       <ListItemCom message='Dashboard' icon={<StarIcon sx={{ color: '#A4EBF3' }} />} link={''} /> 
       <ListItemCom message='Student' icon={<MmsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'student'} /> 
-      <ListItemCom message='Course' icon={<DisplaySettingsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'jobs'} /> 
+      <ListItemCom message='Course' icon={<DisplaySettingsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'course'} /> 
       <ListItemCom message='Activites' icon={<DisplaySettingsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'jobs'} /> 
   </List>
         </Grow>

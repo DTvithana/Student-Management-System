@@ -139,7 +139,7 @@ function CourseList() {
               </Box>
                 <Grid container spacing={3}>
                 
-                <CourseListComponent data={SearchCourse} handleView={handleView} handleEdit={handleEdit} />
+                {/* <CourseListComponent data={SearchCourse} handleView={handleView} handleEdit={handleEdit} /> */}
       
 
                 </Grid>
