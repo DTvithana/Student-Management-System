@@ -26,7 +26,7 @@ function StudentViewCard() {
 
     if (savedView) {
       const views = JSON.parse(savedView);
-      setView(views);
+      setView(views[0]);
     }
   }, []);
 
@@ -51,42 +51,42 @@ function StudentViewCard() {
           <Grid container spacing={1} paddingTop="2rem">
             <Grid sx={{ padding: "1rem" }} item xs={6} md={6}>
               <Typography paddingTop="1rem">Student ID</Typography>
-              <Typography>{view[0]?.id}</Typography>
+              <Typography>{view?.id}</Typography>
             </Grid>
             <Grid sx={{ padding: "1rem" }} item xs={6} md={6}>
               <Typography paddingTop="1rem">Full Name</Typography>
               <Typography>
-                {firstObject?.fName}
-                {firstObject?.lName}
+                {view?.fName}
+                {view?.lName}
               </Typography>
             </Grid>
             <Grid sx={{ padding: "1rem" }} item xs={6} md={6}>
               <Typography paddingTop="1rem">Address</Typography>
-              <Typography>{firstObject?.address}</Typography>
+              <Typography>{view?.address}</Typography>
             </Grid>
             <Grid sx={{ padding: "1rem" }} item xs={6} md={15}>
               <Typography paddingTop="1rem">BirthDay</Typography>
-              <Typography>{firstObject?.birthday}</Typography>
+              <Typography>{view?.birthday}</Typography>
             </Grid>
             <Grid sx={{ padding: "1rem" }} item xs={6} md={6}>
               <Typography paddingTop="1rem">Degree</Typography>
-              <Typography>{firstObject?.degree}</Typography>
+              <Typography>{view?.degree}</Typography>
             </Grid>
             <Grid sx={{ padding: "1rem" }} item xs={6} md={6}>
               <Typography paddingTop="1rem">Course 1</Typography>
-              <Typography>{firstObject?.course1}</Typography>
+              <Typography>{view?.course1}</Typography>
             </Grid>
             <Grid sx={{ padding: "1rem" }} item xs={6} md={6}>
               <Typography paddingTop="1rem">Course 2</Typography>
-              <Typography>{firstObject?.course2}</Typography>
+              <Typography>{view?.course2}</Typography>
             </Grid>
             <Grid sx={{ padding: "1rem" }} item xs={6} md={6}>
               <Typography paddingTop="1rem">Course 3</Typography>
-              <Typography>{firstObject?.course3}</Typography>
+              <Typography>{view?.course3}</Typography>
             </Grid>
             <Grid sx={{ padding: "1rem" }} item xs={6} md={6}>
               <Typography paddingTop="1rem">Course 4</Typography>
-              <Typography>{firstObject?.course4}</Typography>
+              <Typography>{view?.course4}</Typography>
             </Grid>
             <Grid sx={{ padding: "1rem" }} item xs={6} md={15}>
               <Box paddingTop="20px">

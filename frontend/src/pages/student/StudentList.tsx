@@ -23,7 +23,6 @@ import StudentViewCard from "./StudentViewCard";
 import { useNavigate } from "react-router-dom";
 
 interface EduProps {
-  _id: string;
   id: string;
   fName: string;
   lName: string;
@@ -55,18 +54,18 @@ function StudentList() {
     setOpen(false);
   };
 
-  const handleView = (_id: string) => {
-    const views = student.filter((u) => u.id === _id);
+  const handleView = (id: string) => {
+    const views = student.filter((u) => u.id === id);
     localStorage.setItem("view", JSON.stringify(views));
     navigate("/student/view");
   };
 
-  const handleEdit = (_id: string) => {
-    localStorage.setItem("edit", JSON.stringify(_id));
+  const handleEdit = (id: string) => {
+    localStorage.setItem("edit", JSON.stringify(id));
   };
 
-  const SearchStd = (_id: string) => {
-    if (_id) setSearchStudent(student.filter((u) => u.id == _id));
+  const SearchStd = (id: string) => {
+    if (id) setSearchStudent(student.filter((u) => u.id == id));
     else setSearchStudent(student);
   };
 
