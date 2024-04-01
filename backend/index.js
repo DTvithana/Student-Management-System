@@ -92,27 +92,34 @@ app.post('/course', (req, res) => {
 //     });
 // });   
 
-app.post('/admin', (req, res) => {
-    const { email, password } = req.body;
-    const hashedPassword = hashPassword(password); // Assuming you have a function to hash the password
-    console.log(hashedPassword)
-    const sql = `INSERT INTO admin (email, password) VALUES (?, ?)`;
-    const values = [email, hashedPassword];
-    
-    db.query(sql, values, (err, result) => {
-        if(err) throw err;
-        return res.json(result);
-    });
+app.post('/admin', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const hashedPassword = await hashPassword(password);
+        console.log(hashedPassword);
+        const sql = `INSERT INTO admin (email, password) VALUES (?, ?)`;
+        const values = [email, hashedPassword];
+
+        db.query(sql, values, (err, result) => {
+            if (err) throw err;
+            return res.json(result);
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 async function hashPassword(password) {
-    const salt = await bcrypt.genSalt(10);
-    console.log(salt);
-    return password = await bcrypt.hash(password, salt);
-    // Implement your password hashing logic here
-    // For example, you can use bcrypt library to hash the password
-    // const hashedPassword = bcrypt.hashSync(password, saltRounds);
-    // return hashedPassword;
+    try {
+        const salt = await bcrypt.genSalt(10);
+        console.log(salt);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        return hashedPassword;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
 }
 
 
