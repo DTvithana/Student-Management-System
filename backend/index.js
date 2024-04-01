@@ -120,7 +120,33 @@ async function hashPassword(password) {
         console.error(error);
         throw error;
     }
+
 }
+
+app.post('/admin/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const sql = `SELECT * FROM admin WHERE email = ?`;
+        const values = [email];
+
+        db.query(sql, values, async (err, result) => {
+            if (err) throw err;
+            if (result.length === 0) {
+                return res.json({ valid: false });
+            } else {
+                const validPassword = await bcrypt.compare(password, result[0].password);
+                if (validPassword) {
+                    return res.json({ valid: true });
+                } else {
+                    return res.json({ valid: false });
+                }
+            }
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 
 app.listen(5000, () => {
