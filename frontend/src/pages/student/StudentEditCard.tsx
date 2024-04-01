@@ -20,6 +20,7 @@ import axios from "axios";
 import { FieldValues, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import InputComponent from "../../components/InputComponent";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   handelClick: () => void;
@@ -27,7 +28,8 @@ interface Props {
 
 function StudentEditCard({ handelClick }: Props) {
   const [edit, setEdit] = useState<string | undefined>();
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     const savedEdit = localStorage.getItem("edit");
     if (savedEdit) {
@@ -37,15 +39,16 @@ function StudentEditCard({ handelClick }: Props) {
   }, []);
 
   const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-  } = useForm<FormData>();
+    register, handleSubmit, formState: { errors, isValid }, } = useForm<FormData>();
   const onSubmit = (data: FieldValues) => {
     console.log(data);
     axios
-      .post("http://localhost:5000/edit/" + edit, data)
-      .then((res) => console.log(res.data));
+      .put("http://localhost:5000/student/edit/" + edit, data)
+      .then(res => 
+        {
+         console.log(res.data)
+         window.location.reload()
+       } );
   };
 
   return (
@@ -55,7 +58,7 @@ function StudentEditCard({ handelClick }: Props) {
         paddingLeft: "2rem",
       }}
     >
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Box p={1} width="740px" sx={{ borderRadius: "15px" }}>
           <Typography variant="subtitle1">
             Fields marked with * are required.
@@ -65,7 +68,7 @@ function StudentEditCard({ handelClick }: Props) {
             <InputComponent
               Md={6}
               label={"First Name"}
-              objRef={register("fNAme")}
+              objRef={register("fName")}
               error={""}
             />
             <InputComponent
@@ -83,7 +86,7 @@ function StudentEditCard({ handelClick }: Props) {
             <InputComponent
               Md={15}
               label={"BirthDay"}
-              objRef={register("birthDay")}
+              objRef={register("birthday")}
               error={""}
             />
             <InputComponent

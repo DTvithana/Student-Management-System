@@ -22,7 +22,7 @@ function CourseEditCard({handelClick}: Props) {
   const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
   const onSubmit = (data: FieldValues) => {
       console.log(data);
-      axios.post('http://localhost:5000/course', data )
+      axios.put('http://localhost:5000/course', data )
       .then(res => 
        console.log(res.data) )
        }
