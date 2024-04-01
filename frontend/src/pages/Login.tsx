@@ -14,9 +14,9 @@ const styles = {
 function Login() {
   return (
     <Paper style={styles.paperContainer}>
-     <Box height='59.8rem' width={'117rem'} display={'flex'}>
+     <Box height='45.8rem' width={'93rem'} display={'flex'}>
         <Box>
-            <Grid paddingLeft={'15rem'} paddingTop={'10rem'} container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid paddingLeft={'5rem'} paddingTop={'5rem'} container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid width={'50rem'} item xs={6}>
                     <TypographyComponent paddingLeft='' color={'black'} fontSize={'50px'} msg={'Student Management System'}/>
                     <Box paddingTop={'9rem'}>

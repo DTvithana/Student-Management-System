@@ -47,7 +47,7 @@ function CourseList() {
     const views = course.filter((u) => u.courseId === id);
     console.log(id)
     localStorage.setItem("view", JSON.stringify(views));
-    navigate("/course/view");
+    navigate("/admin/course/view");
   };
 
   const handleEdit = (courseId: string) => {

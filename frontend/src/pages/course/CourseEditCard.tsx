@@ -25,7 +25,9 @@ function CourseEditCard({handelClick}: Props) {
       console.log(data);
       axios.put("http://localhost:5000/course/edit/" + edit, data)
       .then(res => 
-       console.log(res.data) )
+       {console.log(res.data)
+       window.location.reload()}
+       )
        }
   
 

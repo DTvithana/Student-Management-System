@@ -19,7 +19,7 @@ function StudentReg() {
       .then(res => 
        {
         console.log(res.data)
-        navigate('/student')
+        navigate('/admin/student')
       } )
        }
   

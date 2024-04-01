@@ -57,7 +57,7 @@ function StudentList() {
   const handleView = (id: string) => {
     const views = student.filter((u) => u.id === id);
     localStorage.setItem("view", JSON.stringify(views));
-    navigate("/student/view");
+    navigate("/admin/student/view");
   };
 
   const handleEdit = (id: string) => {

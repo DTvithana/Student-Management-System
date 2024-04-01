@@ -63,7 +63,7 @@ function CourseViewCard() {
                     color: "white",
                     width: "120px",
                   }}
-                  onClick={() => navigate("/course")}
+                  onClick={() => navigate("/admin/course")}
                   variant="contained"
                 >
                   Back

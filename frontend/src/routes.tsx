@@ -9,19 +9,19 @@ import CourseViewCard from "./pages/course/CourseViewCard";
 import StudentReg from "./pages/student/StudentReg";
 
 const router = createBrowserRouter([
-    { path: '/',
+    { path: 'admin',
       element: <Layout/>,
       children: [
         {  path: '',  element: <Dashboard/> },
-        {  path: '/student',  element: <StudentDashboard/> },
-        {  path: '/student/view',  element: <StudentViewCard/> },
-        {  path: '/course',  element: <CourseDashboard/> },
-        {  path: '/newSt',  element: <StudentReg/> },
-        {  path: '/course/view',  element: <CourseViewCard/> },
+        {  path: 'student',  element: <StudentDashboard/> },
+        {  path: 'student/view',  element: <StudentViewCard/> },
+        {  path: 'course',  element: <CourseDashboard/> },
+        {  path: 'newSt',  element: <StudentReg/> },
+        {  path: 'course/view',  element: <CourseViewCard/> },
       ]
     },
     {
-      path: 'login',
+      path: '/',
       element: <Login/>,
     }
 ])

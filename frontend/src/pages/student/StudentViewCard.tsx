@@ -100,7 +100,7 @@ function StudentViewCard() {
                     color: "white",
                     width: "120px",
                   }}
-                  onClick={() => navigate("/student")}
+                  onClick={() => navigate("/admin/student")}
                   variant="contained"
                 >
                   Back
