@@ -69,6 +69,17 @@ function StudentList() {
     else setSearchStudent(student);
   };
 
+  const handelDelete = (id: string) => {
+    const originalWork = [...student];
+    setStudent(student.filter(u => u.id !== id));
+
+    axios.delete(`http://localhost:5000/student/${id}` )
+    .catch(err => {
+      setError(err.message);
+      setStudent(originalWork)
+    })
+  }
+
   // const handelDelete = (id: string) => {
   //   const originalWork = [...student];
   //   setStudent(student.filter(u => u._id !== id));
@@ -84,7 +95,7 @@ function StudentList() {
     const controller = new AbortController();
 
     axios
-      .get<EduProps[]>("http://localhost:5000/students")
+      .get<EduProps[]>("http://localhost:5000/student")
       .then((res) => setStudent(res.data))
       .catch((err) => {
         if (err instanceof CanceledError) return;
@@ -126,6 +137,7 @@ function StudentList() {
             data={SearchStudent.length == 0 ? student : SearchStudent}
             handleView={handleView}
             handleEdit={handleEdit}
+            handleDelete={handelDelete}
           />
         </Grid>
         {/* <SimpleDialog

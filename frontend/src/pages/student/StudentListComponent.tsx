@@ -16,6 +16,7 @@ interface StdProps {
   data: object[];
   handleView: (id: string) => void;
   handleEdit: (id: string) => void;
+  handleDelete: (id: string) => void;
   std: object[];
 }
 
@@ -44,7 +45,7 @@ function StudentEdit(props: { onClose: any; selectedValue: any; openView: any; }
   };
 
 
-export default function StudentListComponent({ data, handleView, handleEdit }: StdProps) {
+export default function StudentListComponent({ data, handleView, handleEdit, handleDelete }: StdProps) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(2);
   
@@ -104,6 +105,22 @@ export default function StudentListComponent({ data, handleView, handleEdit }: S
                         }}
                     >
                       View
+                    </Button>
+                  </TableCell>
+                  <TableCell align="right">
+                    <Button
+                      sx={{
+                        bgcolor: '#3c998e' + ' !important',
+                        '&:hover': { backgroundColor: '#4EF037', opacity: [0.9, 0.8, 0.7] },
+                        color: 'white',
+                        width: '120px',
+                      }}
+                      variant="contained"
+                      onClick={() => { 
+                        handleDelete(row.id)
+                        }}
+                    >
+                      delete
                     </Button>
                   </TableCell>
                 </TableRow>
