@@ -94,11 +94,11 @@ app.post('/course', (req, res) => {
 
 app.post('/admin', async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { email, password, name } = req.body;
         const hashedPassword = await hashPassword(password);
         console.log(hashedPassword);
-        const sql = `INSERT INTO admin (email, password) VALUES (?, ?)`;
-        const values = [email, hashedPassword];
+        const sql = `INSERT INTO admins (email, password,name) VALUES (?, ?,?)`;
+        const values = [email, hashedPassword,name];
 
         db.query(sql, values, (err, result) => {
             if (err) throw err;
@@ -120,33 +120,57 @@ async function hashPassword(password) {
         console.error(error);
         throw error;
     }
-
 }
 
 app.post('/admin/login', async (req, res) => {
     try {
         const { email, password } = req.body;
-        const sql = `SELECT * FROM admin WHERE email = ?`;
+        const sql = `SELECT * FROM admins WHERE email = ?`;
         const values = [email];
 
         db.query(sql, values, async (err, result) => {
             if (err) throw err;
             if (result.length === 0) {
-                return res.json({ valid: false });
+                return res.json({ "valid": false });
             } else {
                 const validPassword = await bcrypt.compare(password, result[0].password);
                 if (validPassword) {
-                    return res.json({ valid: true });
+                    return res.json({ "valid": true, "name": result[0].name });
                 } else {
-                    return res.json({ valid: false });
+                    return res.json({ "valid": false });
                 }
             }
         });
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: 'Internal Server Error' });
+        return res.status(500).json({ "error": 'Internal Server Error' });
     }
 });
+
+// app.post('/admin/login', async (req, res) => {
+//     try {
+//         const { email, password } = req.body;
+//         const sql = `SELECT * FROM admins WHERE email = ?`;
+//         const values = [email];
+
+//         db.query(sql, values, async (err, result) => {
+//             if (err) throw err;
+//             if (result.length === 0) {
+//                 return res.json({ valid: false });
+//             } else {
+//                 const validPassword = await bcrypt.compare(password, result[0].password);
+//                 if (validPassword) {
+//                     return res.json({ valid: true });
+//                 } else {
+//                     return res.json({ valid: false });
+//                 }
+//             }
+//         });
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// });
 
 
 app.listen(5000, () => {
