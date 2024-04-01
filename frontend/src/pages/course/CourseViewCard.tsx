@@ -22,7 +22,7 @@ function CourseViewCard() {
         const savedView = localStorage.getItem('view');
         if(savedView) { 
             const views = JSON.parse(savedView);
-            setView(views) }
+            setView(views[0]) }
        }, [])
     
 

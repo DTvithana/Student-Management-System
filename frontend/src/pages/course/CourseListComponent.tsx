@@ -72,7 +72,7 @@ export default function CourseListComponent({ data, handleView, handleEdit }: Co
               .map((row) => (
                 <TableRow key={row.courseId} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell component="th" scope="row">
-                    {row._id}
+                    {row.id}
                   </TableCell>
                   <TableCell align="right">{row.courseName}</TableCell>
                   <TableCell align="right">{row.courseId}</TableCell>
@@ -102,7 +102,8 @@ export default function CourseListComponent({ data, handleView, handleEdit }: Co
                       }}
                       variant="contained"
                       onClick={() => { 
-                        handleView(row.courseId)
+                        // handleView(row.courseId)
+                        console.log(row.id)
                         }}
                     >
                       View

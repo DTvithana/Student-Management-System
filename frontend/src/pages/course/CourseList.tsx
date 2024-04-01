@@ -20,7 +20,7 @@ import CourseListComponent from "./CourseListComponent";
 import axios, { CanceledError } from "axios";
 
 interface CourseProps {
-  _id: string;
+  id: string;
   courseName: string;
   courseId: string;
 }
@@ -43,25 +43,26 @@ function CourseList() {
     setOpen(false);
   };
 
-  const handleView = (_id: string) => {
-    const views = course.filter((u) => u._id === _id);
+  const handleView = (id: string) => {
+    const views = course.filter((u) => u.id === id);
+    console.log(views)
     localStorage.setItem("view", JSON.stringify(views));
     navigate("/course/view");
   };
 
-  const handleEdit = (_id: string) => {
-    localStorage.setItem("edit", JSON.stringify(_id));
+  const handleEdit = (id: string) => {
+    localStorage.setItem("edit", JSON.stringify(id));
   };
 
-  const SearchStd = (_id: string) => {
-    if (_id) setSearchCourse(course.filter((u) => u.courseId == _id));
+  const SearchStd = (id: string) => {
+    if (id) setSearchCourse(course.filter((u) => u.courseId == id));
     else setSearchCourse(course);
     console.log(course);
   };
 
   // const handelDelete = (id: string) => {
   //   const originalWork = [...Course];
-  //   setCourse(Course.filter(u => u._id !== id));
+  //   setCourse(Course.filter(u => u.id !== id));
 
   //   axios.delete(`http://localhost:5000/api/Course/${id}` )
   //   .catch(err => {
