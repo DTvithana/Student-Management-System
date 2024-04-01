@@ -92,6 +92,16 @@ app.post('/course', (req, res) => {
 //     });
 // });   
 
+app.delete('/student/:id', (req, res) => {
+    const studentId = req.params.id;
+    const sql = 'DELETE FROM students WHERE id = ?';
+    
+    db.query(sql, studentId, (err, result) => {
+        if(err) throw err;
+        return res.json(true);
+    });
+});
+
 app.post('/admin', async (req, res) => {
     try {
         const { email, password, name } = req.body;
