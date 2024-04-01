@@ -62,7 +62,6 @@ export default function StudentListComponent({ data, handleView, handleEdit }: S
             <TableRow>
               <TableCell>ID</TableCell>
               <TableCell align="right">Name</TableCell>
-              <TableCell align="right">Index Number</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
