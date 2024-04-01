@@ -44,12 +44,8 @@ function CourseViewCard() {
         <Box p={1} width="640px">
           <Grid container spacing={1} paddingTop="2rem">
             <Grid sx={{ padding: "1rem" }} item xs={6} md={6}>
-              <Typography paddingTop="1rem"> ID</Typography>
-              <Typography>{view?._id}</Typography>
-            </Grid>
-            <Grid sx={{ padding: "1rem" }} item xs={6} md={6}>
               <Typography paddingTop="1rem">Course ID</Typography>
-              <Typography>{view?.courseID}</Typography>
+              <Typography>{view?.courseId}</Typography>
             </Grid>
             <Grid sx={{ padding: "1rem" }} item xs={6} md={6}>
               <Typography paddingTop="1rem">Course Name</Typography>

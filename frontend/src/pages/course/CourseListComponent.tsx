@@ -100,8 +100,8 @@ export default function CourseListComponent({ data, handleView, handleEdit }: Co
                       }}
                       variant="contained"
                       onClick={() => { 
-                        // handleView(row.courseId)
-                        console.log(row.courseId)
+                         handleView(row.courseId)
+                       // console.log(row.courseId)
                         }}
                     >
                       View

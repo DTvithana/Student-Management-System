@@ -44,7 +44,7 @@ function CourseList() {
   };
 
   const handleView = (id: string) => {
-    const views = course.filter((u) => u.id === id);
+    const views = course.filter((u) => u.courseId === id);
     console.log(views)
     localStorage.setItem("view", JSON.stringify(views));
     navigate("/course/view");
@@ -54,7 +54,7 @@ function CourseList() {
     localStorage.setItem("edit", JSON.stringify(id));
   };
 
-  const SearchStd = (id: string) => {
+  const SearchCourses = (id: string) => {
     if (id) setSearchCourse(course.filter((u) => u.courseId == id));
     else setSearchCourse(course);
     console.log(course);
@@ -111,7 +111,7 @@ function CourseList() {
             placeholder="Search"
             id="outlined-basic"
             variant="outlined"
-            onChange={(event) => SearchStd(event.target.value)}
+            onChange={(event) => SearchCourses(event.target.value)}
           />
         </Box>
         <Grid container spacing={3}>
