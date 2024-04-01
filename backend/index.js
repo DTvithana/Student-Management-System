@@ -2,6 +2,7 @@ const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const bcrypt = require("bcrypt");
 
 const db = mysql.createConnection({ 
     host: 'localhost',
@@ -79,6 +80,41 @@ app.post('/course', (req, res) => {
         return res.json(result);
     });
 });
+
+// app.post('/admin', (req, res) => {
+//     const { email, password } = req.body;
+//     const sql = `INSERT INTO admin (email, password) VALUES (?, ?)`;
+//     const values = [email, password];
+    
+//     db.query(sql, values, (err, result) => {
+//         if(err) throw err;
+//         return res.json(result);
+//     });
+// });   
+
+app.post('/admin', (req, res) => {
+    const { email, password } = req.body;
+    const hashedPassword = hashPassword(password); // Assuming you have a function to hash the password
+    console.log(hashedPassword)
+    const sql = `INSERT INTO admin (email, password) VALUES (?, ?)`;
+    const values = [email, hashedPassword];
+    
+    db.query(sql, values, (err, result) => {
+        if(err) throw err;
+        return res.json(result);
+    });
+});
+
+async function hashPassword(password) {
+    const salt = await bcrypt.genSalt(10);
+    console.log(salt);
+    return password = await bcrypt.hash(password, salt);
+    // Implement your password hashing logic here
+    // For example, you can use bcrypt library to hash the password
+    // const hashedPassword = bcrypt.hashSync(password, saltRounds);
+    // return hashedPassword;
+}
+
 
 app.listen(5000, () => {
     console.log('listening on port 5000')
