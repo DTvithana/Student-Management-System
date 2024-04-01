@@ -61,9 +61,8 @@ export default function CourseListComponent({ data, handleView, handleEdit }: Co
         <Table sx={{ minWidth: 300, maxWidth: 900 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
+              <TableCell>Course ID</TableCell>
               <TableCell align="right">Course Name</TableCell>
-              <TableCell align="right">Course ID</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -72,10 +71,9 @@ export default function CourseListComponent({ data, handleView, handleEdit }: Co
               .map((row) => (
                 <TableRow key={row.courseId} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell component="th" scope="row">
-                    {row.id}
+                    {row.courseId}
                   </TableCell>
                   <TableCell align="right">{row.courseName}</TableCell>
-                  <TableCell align="right">{row.courseId}</TableCell>
                   <TableCell align="right">
                     <Button
                       sx={{
@@ -103,7 +101,7 @@ export default function CourseListComponent({ data, handleView, handleEdit }: Co
                       variant="contained"
                       onClick={() => { 
                         // handleView(row.courseId)
-                        console.log(row.id)
+                        console.log(row.courseId)
                         }}
                     >
                       View

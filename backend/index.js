@@ -67,6 +67,17 @@ app.put('/course/:id', (req, res) => {
         return res.json(result);
     });
 });
+ 
+app.post('/course', (req, res) => {
+    const { courseName, courseId } = req.body;
+    const sql = `INSERT INTO courses (courseName, courseId) VALUES (?, ?)`;
+    const values = [courseName, courseId];
+    
+    db.query(sql, values, (err, result) => {
+        if(err) throw err;
+        return res.json(result);
+    });
+});
 
 app.listen(5000, () => {
     console.log('listening on port 5000')
