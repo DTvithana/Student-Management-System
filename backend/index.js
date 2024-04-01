@@ -172,6 +172,14 @@ app.post('/admin/login', async (req, res) => {
 //     }
 // });
 
+app.get('/students/count', (req, res) => {
+    const sql = 'SELECT COUNT(*) AS count FROM students';
+    db.query(sql, (err, result) => {
+        if(err) throw err;
+        return res.json(result[0].count);
+    })
+})
+
 
 app.listen(5000, () => {
     console.log('listening on port 5000')

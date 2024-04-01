@@ -17,8 +17,8 @@ interface Props {
 function UserNavBar({user, handelClick, name}: Props) {
 
   return (
-    <Box borderRadius='18'  paddingLeft='1rem' 
-    sx={{ width: '100rem' }}
+    <Box borderRadius='20'  paddingLeft='0.2rem' 
+    sx={{ width: '90rem' }}
     >
     <AppBar position="static" sx={{bgcolor: '#1A5092'}}>
       <Toolbar>
@@ -26,7 +26,7 @@ function UserNavBar({user, handelClick, name}: Props) {
         <Box paddingLeft='7rem'>
         
         </Box>
-         {user && <Typography
+         {name && <Typography
             component="div"
             sx={{ paddingLeft: '3rem', fontFamily: '-apple-system', fontSize: '21px' ,display: { xs: 'none', sm: 'block' } }}
           >
@@ -35,7 +35,7 @@ function UserNavBar({user, handelClick, name}: Props) {
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 
-        {user &&
+        {name &&
           <>
           <Button onClick={handelClick} sx={{color: 'white', width: '7rem' }}>Logout</Button>
           <IconButton size="large" aria-label="show 4 new mails" color="inherit">
