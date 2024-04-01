@@ -45,13 +45,13 @@ function CourseList() {
 
   const handleView = (id: string) => {
     const views = course.filter((u) => u.courseId === id);
-    console.log(views)
+    console.log(id)
     localStorage.setItem("view", JSON.stringify(views));
     navigate("/course/view");
   };
 
-  const handleEdit = (id: string) => {
-    localStorage.setItem("edit", JSON.stringify(id));
+  const handleEdit = (courseId: string) => {
+    localStorage.setItem("edit", JSON.stringify(courseId));
   };
 
   const SearchCourses = (id: string) => {

@@ -13,16 +13,17 @@ function CourseEditCard({handelClick}: Props) {
     const [edit, setEdit] = useState<string | undefined>()
 
     useEffect(() => {
-        const savedEdit = localStorage.getItem('editCourse');
+        const savedEdit = localStorage.getItem('edit');
         if(savedEdit) { 
             const edits = JSON.parse(savedEdit);
+            console.log(edits)
             setEdit(edits) }
        }, [])
 
   const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
   const onSubmit = (data: FieldValues) => {
       console.log(data);
-      axios.put('http://localhost:5000/course', data )
+      axios.put("http://localhost:5000/course/edit/" + edit, data)
       .then(res => 
        console.log(res.data) )
        }
@@ -39,8 +40,9 @@ return (
              Fields marked with * are required.
            </Typography>
            <Grid container spacing={2} paddingTop='2rem'>
+               <InputComponent Md={6} label={'Course ID'} value={edit} error={''}/>
                <InputComponent Md={6} label={'Course Name'} objRef={register('courseName')} error={''} />
-               <InputComponent Md={6} label={'Course ID'} value={edit} objRef={register('courseId')} error={''}/>
+              
 
                <Grid item xs={6} md={1.7} >
                  <Button onClick={handelClick}  sx={{borderRadius: '12px'}} variant="outlined">cancel</Button>

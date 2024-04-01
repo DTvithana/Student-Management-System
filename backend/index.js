@@ -38,6 +38,15 @@ app.post('/student', (req, res) => {
 })
 });
 
+
+app.get('/course', (req, res) => {
+    const sql = 'SELECT * FROM courses';
+    db.query(sql, (err, result) => {
+        if(err) throw err;
+        return res.json(result);
+    })
+});
+
 app.put('/student/edit/:id', (req, res) => {
     const { fName, lName, address, birthday, degree, course1, course2, course3, course4 } = req.body;
     const sql = `UPDATE students SET fName = ?, lName = ?, address = ?, birthday = ?, degree = ?, course1 = ?, course2 = ?, course3 = ?, course4 = ? WHERE id = ?`;
@@ -49,18 +58,10 @@ app.put('/student/edit/:id', (req, res) => {
 })
 });
 
-app.get('/course', (req, res) => {
-    const sql = 'SELECT * FROM courses';
-    db.query(sql, (err, result) => {
-        if(err) throw err;
-        return res.json(result);
-    })
-});
-
-app.put('/course/:id', (req, res) => {
-    const { courseName, courseId } = req.body;
-    const sql = `UPDATE courses SET courseName = ?, courseId = ? WHERE id = ?`;
-    const values = [courseName, courseId, req.params.id];
+app.put('/course/edit/:courseId', (req, res) => {
+    const { courseName } = req.body;
+    const sql = `UPDATE courses SET courseName = ? WHERE courseId = ?`;
+    const values = [courseName, req.params.courseId];
     
     db.query(sql, values, (err, result) => {
         if(err) throw err;
