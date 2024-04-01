@@ -190,7 +190,7 @@ app.get('/student/count', (req, res) => {
     })
 })
 
-app.get('/courses/count', (req, res) => {
+app.get('/course/count', (req, res) => {
     const sql = 'SELECT COUNT(*) AS count FROM courses';
     db.query(sql, (err, result) => {
         if(err) throw err;

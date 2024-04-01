@@ -78,7 +78,7 @@ export default function StudentListComponent({ data, handleView, handleEdit, han
                   <TableCell align="right">
                     <Button
                       sx={{
-                        bgcolor: '#ff0000' + ' !important',
+                        bgcolor: '#22c25e' + ' !important',
                         '&:hover': { backgroundColor: '#4EF037', opacity: [0.9, 0.8, 0.7] },
                         color: 'white',
                         width: '120px',
@@ -110,7 +110,7 @@ export default function StudentListComponent({ data, handleView, handleEdit, han
                   <TableCell align="right">
                     <Button
                       sx={{
-                        bgcolor: '#3c998e' + ' !important',
+                        bgcolor: '#ff0000' + ' !important',
                         '&:hover': { backgroundColor: '#4EF037', opacity: [0.9, 0.8, 0.7] },
                         color: 'white',
                         width: '120px',
