@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
    return res.json('From backend');
 })
 
-app.get('/students', (req, res) => {
+app.get('/student', (req, res) => {
     const sql = 'SELECT * FROM students';
     db.query(sql, (err, result) => {
         if(err) throw err;
@@ -172,7 +172,7 @@ app.post('/admin/login', async (req, res) => {
 //     }
 // });
 
-app.get('/students/count', (req, res) => {
+app.get('/student/count', (req, res) => {
     const sql = 'SELECT COUNT(*) AS count FROM students';
     db.query(sql, (err, result) => {
         if(err) throw err;
