@@ -15,9 +15,12 @@ function StudentReg() {
   const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
   const onSubmit = (data: FieldValues) => {
       console.log(data);
-      axios.post('http://localhost:8081/student', data )
+      axios.post('http://localhost:5000/student', data )
       .then(res => 
-       console.log(res.data) )
+       {
+        console.log(res.data)
+        navigate('/student')
+      } )
        }
   
 
@@ -36,7 +39,7 @@ return (
                <InputComponent Md={6} label={'First Name'} objRef={register('fName')} error={''} />
                <InputComponent Md={6} label={'Last Name'} objRef={register('lName')} error={''}/>
                <InputComponent Md={15} label={'Address'} objRef={register('address')} error={''}/>
-               <InputComponent Md={15} label={'BirthDay'} objRef={register('birthDay')} error={''}/>
+               <InputComponent Md={15} label={'BirthDay'} type='date' objRef={register('birthday')} error={''}/>
                <InputComponent Md={15} label={'Degree'} objRef={register('degree')} error={''}/>
                <InputComponent Md={15} label={'Course 1'} objRef={register('course1')} error={''}/>
                <InputComponent Md={15} label={'Course 2'} objRef={register('course2')} error={''}/>

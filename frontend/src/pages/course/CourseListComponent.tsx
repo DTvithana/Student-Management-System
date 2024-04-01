@@ -70,12 +70,12 @@ export default function CourseListComponent({ data, handleView, handleEdit }: Co
             {data
               ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => (
-                <TableRow key={row.courseName} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableRow key={row.courseId} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell component="th" scope="row">
                     {row._id}
                   </TableCell>
                   <TableCell align="right">{row.courseName}</TableCell>
-                  <TableCell align="right">{row.courseID}</TableCell>
+                  <TableCell align="right">{row.courseId}</TableCell>
                   <TableCell align="right">
                     <Button
                       sx={{
@@ -86,7 +86,7 @@ export default function CourseListComponent({ data, handleView, handleEdit }: Co
                       }}
                       variant="contained"
                       onClick={() => { 
-                        handleEdit(row._id)
+                        handleEdit(row.courseId)
                         setOpenEdit(true)}}
                     >
                       Edit
@@ -102,7 +102,7 @@ export default function CourseListComponent({ data, handleView, handleEdit }: Co
                       }}
                       variant="contained"
                       onClick={() => { 
-                        handleView(row._id)
+                        handleView(row.courseId)
                         }}
                     >
                       View

@@ -71,7 +71,7 @@ export default function StudentListComponent({ data, handleView, handleEdit }: S
               .map((row) => (
                 <TableRow key={row.fName} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell component="th" scope="row">
-                    {row._id}
+                    {row.id}
                   </TableCell>
                   <TableCell align="right">{row.fName}</TableCell>
                   <TableCell align="right">{row.index}</TableCell>
@@ -85,7 +85,7 @@ export default function StudentListComponent({ data, handleView, handleEdit }: S
                       }}
                       variant="contained"
                       onClick={() => { 
-                        handleEdit(row._id)
+                        handleEdit(row.id)
                         setOpenEdit(true)}}
                     >
                       Edit
@@ -101,7 +101,7 @@ export default function StudentListComponent({ data, handleView, handleEdit }: S
                       }}
                       variant="contained"
                       onClick={() => { 
-                        handleView(row._id)
+                        handleView(row.id)
                         }}
                     >
                       View

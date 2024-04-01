@@ -1,15 +1,17 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const db = mysql.createConnection({ 
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'student'
+    database: 'lms'
 });   
 
 const app = express();
+app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
@@ -36,7 +38,7 @@ app.post('/student', (req, res) => {
 })
 });
 
-app.put('/student/:id', (req, res) => {
+app.put('/student/edit/:id', (req, res) => {
     const { fName, lName, address, birthday, degree, course1, course2, course3, course4 } = req.body;
     const sql = `UPDATE students SET fName = ?, lName = ?, address = ?, birthday = ?, degree = ?, course1 = ?, course2 = ?, course3 = ?, course4 = ? WHERE id = ?`;
     const values = [fName, lName, address, birthday, degree, course1, course2, course3, course4, req.params.id];
@@ -66,6 +68,6 @@ app.put('/course/:id', (req, res) => {
     });
 });
 
-app.listen(8081, () => {
-    console.log('listening on port 8081')
+app.listen(5000, () => {
+    console.log('listening on port 5000')
 })   
