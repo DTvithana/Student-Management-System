@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import axios from "axios";
 import StudentList from "./StudentList";
+import { toBeInTheDocument } from "@testing-library/jest-dom/extend-expect";
 
 jest.mock("axios");
 
@@ -10,18 +11,20 @@ describe("StudentList", () => {
     jest.clearAllMocks();
   });
 
-  test("renders search input", () => {
+
+
+test("renders search input", () => {
     render(<StudentList />);
     const searchInput = screen.getByPlaceholderText("Search");
     expect(searchInput).toBeInTheDocument();
-  });
+});
 
-  test("searches for students", () => {
+test("searches for students", () => {
     render(<StudentList />);
     const searchInput = screen.getByPlaceholderText("Search");
     fireEvent.change(searchInput, { target: { value: "123" } });
     expect(searchInput.value).toBe("123");
-  });
+});
 
   test("fetches students on mount", async () => {
     const mockStudents = [
@@ -39,7 +42,7 @@ describe("StudentList", () => {
         course4: "History",
       },
     ];
-    axios.get.mockResolvedValueOnce({ data: mockStudents });
+    jest.spyOn(axios, 'get').mockResolvedValueOnce({ data: mockStudents });
     render(<StudentList />);
     expect(axios.get).toHaveBeenCalledWith("http://localhost:5000/student");
     await screen.findByText("John Doe");
