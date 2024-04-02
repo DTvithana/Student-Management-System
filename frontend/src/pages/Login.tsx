@@ -38,10 +38,12 @@ function Login() {
      axios.post('http://localhost:5000/admin/login',  data )
      .then(res => {
       console.log(res.data);
-      {if(res.data) 
+      {if(res.data.valid) 
        { 
         localStorage.setItem('admin', JSON.stringify(res.data));
-        navigate('/admin');}} }
+        navigate('/admin');}
+       else navigate('')
+    } }
     )
     .catch(err => {
       if(err instanceof CanceledError) return;

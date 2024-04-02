@@ -57,7 +57,7 @@ function Status() {
         <Box >
         <Grid container spacing={20}>
           
-        <StatusCard start={0} end={stdCount} title={'Total Studnets'} b1={'#D1E9FC'} b2={'#79c2fc'} />
+        <StatusCard start={0} end={stdCount} title={'Total Students'} b1={'#D1E9FC'} b2={'#79c2fc'} />
         <StatusCard start={0} end={10} title={'Total Activities'} b1={'#D0F2FF'} b2={'#68d3fc'} />
         <StatusCard start={0} end={courseCount} title={'Total Courses'} b1={'#FFF7CD'} b2={'#ffed87'}/>
         
