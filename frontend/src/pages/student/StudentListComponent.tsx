@@ -143,3 +143,4 @@ export default function StudentListComponent({ data, handleView, handleEdit, han
     </Box>
   );
 }
+

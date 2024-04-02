@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 function StudentReg() {
   const navigate = useNavigate();
   const handelCancel = () => {
-    navigate('/')
+    navigate('/admin')
   }
 
   const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
